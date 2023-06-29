@@ -30,7 +30,68 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
-  # You need to write this method
+  sum = 0
+  (1..6).each do |i|
+    idice = dice.select { |d| d == i}
+    count = idice.size
+
+    if count >= 3
+      sum += (i==1 ? 1000 : i*100)
+    end
+    sum += (count % 3) * 100 if i == 1
+    sum += (count % 3) * 50 if i == 5
+  end
+  sum
+  # # freq = {1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0}
+  # # dice.map {|die| freq[die] += 1 }
+
+  
+  # # # if freq[1] == 3 
+  # # #   count = count + 1000
+  # # # end
+
+  # # # if freq[2] == 3
+  # # #   count = count + 200
+  # # # end
+
+  # # if freq[x] == 3
+  # #   count = count + 300
+  # # end
+
+  # ones = dice.select{|el| el == 1}.length
+  # twos = dice.select{|el| el == 2}.length
+  # threes = dice.select{|el| el == 3}.length
+  # fours = dice.select{|el| el == 4}.length
+  # fives = dice.select{|el| el == 5}.length
+  # sixes = dice.select{|el| el == 6}.length
+  
+  # def multi(die)
+  #   if die >= 3
+  #     count += 100 * die 
+  #   end
+  # end
+
+  # multi(ones)
+  # multi(twos)
+  # multi(threes)
+  # multi(fours)
+  # multi(fives)
+  # multi(sixes)
+
+  # if ones >= 3 
+  #   count += 900
+  #   ones = ones - 3
+  # end
+
+  # if fives >= 3
+  #   fives = fives - 3
+  # end
+
+  # count = fives * 50
+  # count = ones * 100
+
+  # return count
+
 end
 
 class AboutScoringProject < Neo::Koan
